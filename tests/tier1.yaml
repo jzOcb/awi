@@ -1,0 +1,300 @@
+tests:
+  - url: https://example.com
+    name: Basic static HTML - Example
+    category: static
+    expect:
+      status: ok
+      title_contains: Example Domain
+      min_content_length: 50
+      no_html_tags: true
+      max_time_seconds: 5
+
+  - url: https://httpbin.org/get
+    name: Basic static HTML - httpbin get
+    category: static
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 20
+      no_html_tags: true
+      max_time_seconds: 5
+
+  - url: https://www.w3.org/TR/html52/
+    name: Basic static HTML - W3C HTML 5.2
+    category: static
+    expect:
+      status: ok
+      title_contains: HTML
+      min_content_length: 500
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://datatracker.ietf.org/doc/html/rfc2616
+    name: Basic static HTML - RFC 2616
+    category: static
+    expect:
+      status: ok
+      title_contains: RFC 2616
+      min_content_length: 1000
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://www.gnu.org/philosophy/free-sw.en.html
+    name: Basic static HTML - GNU free software
+    category: static
+    expect:
+      status: ok
+      title_contains: Free Software
+      min_content_length: 500
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://docs.python.org/3/tutorial/index.html
+    name: Docs - Python tutorial
+    category: tech_docs
+    expect:
+      status: ok
+      title_contains: Python
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://go.dev/doc/effective_go
+    name: Docs - Effective Go
+    category: tech_docs
+    expect:
+      status: ok
+      title_contains: Effective Go
+      min_content_length: 1000
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+    name: Docs - MDN JavaScript
+    category: tech_docs
+    expect:
+      status: ok
+      title_contains: JavaScript
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://docs.github.com/en/get-started
+    name: Docs - GitHub getting started
+    category: tech_docs
+    expect:
+      status: ok
+      title_contains: GitHub
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://platform.openai.com/docs/overview
+    name: Docs - OpenAI overview
+    category: tech_docs
+    expect:
+      status: ok
+      title_contains: OpenAI
+      min_content_length: 100
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://blog.golang.org/
+    name: News - Go blog
+    category: news_blog
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 100
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://openai.com/blog
+    name: News - OpenAI blog
+    category: news_blog
+    expect:
+      status: ok
+      title_contains: OpenAI
+      min_content_length: 100
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/
+    name: News - Joel on Software
+    category: news_blog
+    expect:
+      status: ok
+      title_contains: Never Do
+      min_content_length: 500
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://paulgraham.com/greatwork.html
+    name: News - Paul Graham great work
+    category: news_blog
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 1000
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://martinfowler.com/bliki/TechnicalDebt.html
+    name: News - Martin Fowler technical debt
+    category: news_blog
+    expect:
+      status: ok
+      title_contains: Technical Debt
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://github.com/anthropics/anthropic-sdk-python
+    name: GitHub - anthropic-sdk-python
+    category: github
+    expect:
+      status: ok
+      title_contains: anthropic
+      min_content_length: 100
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://github.com/nicepkg/gpt-runner
+    name: GitHub - gpt-runner repo
+    category: github
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 50
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://github.com/nicepkg/gpt-runner/blob/main/README.md
+    name: GitHub - gpt-runner README
+    category: github
+    expect:
+      status: ok
+      title_contains: README
+      min_content_length: 100
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://www.ruanyifeng.com/blog/2024/01/weekly-issue-288.html
+    name: Chinese - ruanyifeng weekly
+    category: chinese
+    expect:
+      status: ok
+      title_contains: 科技爱好者周刊
+      min_content_length: 500
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://coolshell.cn/articles/22298.html
+    name: Chinese - coolshell article
+    category: chinese
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://sspai.com/post/77726
+    name: Chinese - sspai post
+    category: chinese
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://news.ycombinator.com/
+    name: Social - Hacker News
+    category: social_forum
+    expect:
+      status: ok
+      title_contains: Hacker News
+      min_content_length: 50
+      no_html_tags: true
+      max_time_seconds: 8
+
+  - url: https://www.reddit.com/r/golang/
+    name: Social - Reddit golang
+    category: social_forum
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 50
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://stackoverflow.com/questions/tagged/go
+    name: Social - StackOverflow go
+    category: social_forum
+    expect:
+      status: ok
+      title_contains: go
+      min_content_length: 50
+      no_html_tags: true
+      max_time_seconds: 10
+
+  - url: https://www.cloudflare.com/learning/what-is-cloudflare/
+    name: Cloudflare - what is cloudflare
+    category: cloudflare
+    expect:
+      status: ok
+      title_contains: Cloudflare
+      min_content_length: 200
+      no_html_tags: true
+      max_time_seconds: 12
+
+  - url: https://discord.com/blog
+    name: Cloudflare - Discord blog
+    category: cloudflare
+    expect:
+      status: ok
+      title_contains: Discord
+      min_content_length: 50
+      no_html_tags: true
+      max_time_seconds: 12
+
+  - url: https://medium.com/@nikitonsky/software-disenchantment-1a44e6a7a6a3
+    name: Cloudflare - Medium article
+    category: cloudflare
+    expect:
+      status: ok
+      title_contains: ''
+      min_content_length: 500
+      no_html_tags: true
+      max_time_seconds: 12
+
+  - url: https://www.google.com/
+    name: Edge - Google homepage
+    category: edge_cases
+    expect:
+      status: ok
+      title_contains: Google
+      min_content_length: 0
+      no_html_tags: true
+      max_time_seconds: 5
+
+  - url: https://nonexistent.invalid/
+    name: Edge - nonexistent invalid domain
+    category: edge_cases
+    expect:
+      status: fail
+      title_contains: ''
+      min_content_length: 0
+      no_html_tags: false
+      max_time_seconds: 5
+
+  - url: https://httpbin.org/status/500
+    name: Edge - httpbin 500 status
+    category: edge_cases
+    expect:
+      status: fail
+      title_contains: ''
+      min_content_length: 0
+      no_html_tags: false
+      max_time_seconds: 5

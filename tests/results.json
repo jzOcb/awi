@@ -1,0 +1,2793 @@
+{
+  "tier": "tier1",
+  "date": "2026-02-28",
+  "total": 30,
+  "pass": 27,
+  "fail": 2,
+  "flaky": 1,
+  "score": 116,
+  "score_max": 120,
+  "cases": [
+    {
+      "name": "Basic static HTML - Example",
+      "url": "https://example.com",
+      "category": "static",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Example Domain",
+        "min_content_length": 50,
+        "no_html_tags": true,
+        "max_time_seconds": 5
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.098,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 111,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.098,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "stealth",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.085,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 111,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.085,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "stealth",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Basic static HTML - httpbin get",
+      "url": "https://httpbin.org/get",
+      "category": "static",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 20,
+        "no_html_tags": true,
+        "max_time_seconds": 5
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.464,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 453,
+              "expected_min": 20,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.464,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.124,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 453,
+              "expected_min": 20,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.124,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Basic static HTML - W3C HTML 5.2",
+      "url": "https://www.w3.org/TR/html52/",
+      "category": "static",
+      "expect": {
+        "status": "ok",
+        "title_contains": "HTML",
+        "min_content_length": 500,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 4.047,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 41734,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 4.047,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 4.188,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 41734,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 4.188,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Basic static HTML - RFC 2616",
+      "url": "https://datatracker.ietf.org/doc/html/rfc2616",
+      "category": "static",
+      "expect": {
+        "status": "ok",
+        "title_contains": "RFC 2616",
+        "min_content_length": 1000,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.13,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 376633,
+              "expected_min": 1000,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.13,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.119,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 376633,
+              "expected_min": 1000,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.119,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Basic static HTML - GNU free software",
+      "url": "https://www.gnu.org/philosophy/free-sw.en.html",
+      "category": "static",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Free Software",
+        "min_content_length": 500,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.07,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 22862,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.07,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.068,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 22862,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.068,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Docs - Python tutorial",
+      "url": "https://docs.python.org/3/tutorial/index.html",
+      "category": "tech_docs",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Python",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.052,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 6128,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.052,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.05,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 6128,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.05,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Docs - Effective Go",
+      "url": "https://go.dev/doc/effective_go",
+      "category": "tech_docs",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Effective Go",
+        "min_content_length": 1000,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.274,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 95184,
+              "expected_min": 1000,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.274,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.196,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 95184,
+              "expected_min": 1000,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.196,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Docs - MDN JavaScript",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      "category": "tech_docs",
+      "expect": {
+        "status": "ok",
+        "title_contains": "JavaScript",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.307,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 5570,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.307,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.07,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 5570,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.07,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Docs - GitHub getting started",
+      "url": "https://docs.github.com/en/get-started",
+      "category": "tech_docs",
+      "expect": {
+        "status": "ok",
+        "title_contains": "GitHub",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.075,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 920,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.075,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.068,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 920,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.068,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Docs - OpenAI overview",
+      "url": "https://platform.openai.com/docs/overview",
+      "category": "tech_docs",
+      "expect": {
+        "status": "ok",
+        "title_contains": "OpenAI",
+        "min_content_length": 100,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "fail",
+      "run_statuses": [
+        "fail",
+        "fail"
+      ],
+      "score": 2,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 3.995,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": false,
+            "content_length": {
+              "actual": 84,
+              "expected_min": 100,
+              "pass": false
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 3.995,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 2,
+          "max_score": 4,
+          "passed": false,
+          "reasons": [
+            "title mismatch (expected contains 'OpenAI')",
+            "content_length=84 (expected >=100)"
+          ],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 3.729,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": false,
+            "content_length": {
+              "actual": 84,
+              "expected_min": 100,
+              "pass": false
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 3.729,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 2,
+          "max_score": 4,
+          "passed": false,
+          "reasons": [
+            "title mismatch (expected contains 'OpenAI')",
+            "content_length=84 (expected >=100)"
+          ],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "News - Go blog",
+      "url": "https://blog.golang.org/",
+      "category": "news_blog",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 100,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.231,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1797,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.231,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.273,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1797,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.273,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "News - OpenAI blog",
+      "url": "https://openai.com/blog",
+      "category": "news_blog",
+      "expect": {
+        "status": "ok",
+        "title_contains": "OpenAI",
+        "min_content_length": 100,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.687,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 179,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.687,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "stealth",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.631,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 179,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.631,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "stealth",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "News - Joel on Software",
+      "url": "https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/",
+      "category": "news_blog",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Never Do",
+        "min_content_length": 500,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.093,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 7949,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.093,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.082,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 7949,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.082,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "News - Paul Graham great work",
+      "url": "https://paulgraham.com/greatwork.html",
+      "category": "news_blog",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 1000,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.249,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 66520,
+              "expected_min": 1000,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.249,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.17,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 66520,
+              "expected_min": 1000,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.17,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "News - Martin Fowler technical debt",
+      "url": "https://martinfowler.com/bliki/TechnicalDebt.html",
+      "category": "news_blog",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Technical Debt",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.098,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 6252,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.098,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.091,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 6252,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.091,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GitHub - anthropic-sdk-python",
+      "url": "https://github.com/anthropics/anthropic-sdk-python",
+      "category": "github",
+      "expect": {
+        "status": "ok",
+        "title_contains": "anthropic",
+        "min_content_length": 100,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.6,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 480,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.6,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.157,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 480,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.157,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GitHub - gpt-runner repo",
+      "url": "https://github.com/nicepkg/gpt-runner",
+      "category": "github",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 50,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.553,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 3600,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.553,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.147,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 3600,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.147,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "GitHub - gpt-runner README",
+      "url": "https://github.com/nicepkg/gpt-runner/blob/main/README.md",
+      "category": "github",
+      "expect": {
+        "status": "ok",
+        "title_contains": "README",
+        "min_content_length": 100,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.332,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1679,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.332,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.135,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1679,
+              "expected_min": 100,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.135,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Chinese - ruanyifeng weekly",
+      "url": "https://www.ruanyifeng.com/blog/2024/01/weekly-issue-288.html",
+      "category": "chinese",
+      "expect": {
+        "status": "ok",
+        "title_contains": "科技爱好者周刊",
+        "min_content_length": 500,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.082,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 5158,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.082,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.076,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 5158,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.076,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Chinese - coolshell article",
+      "url": "https://coolshell.cn/articles/22298.html",
+      "category": "chinese",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.073,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 2858,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.073,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.076,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 2858,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.076,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Chinese - sspai post",
+      "url": "https://sspai.com/post/77726",
+      "category": "chinese",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 8.994,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 296,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 8.994,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 9.402,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 296,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 9.402,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Social - Hacker News",
+      "url": "https://news.ycombinator.com/",
+      "category": "social_forum",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Hacker News",
+        "min_content_length": 50,
+        "no_html_tags": true,
+        "max_time_seconds": 8
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.421,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 3720,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.421,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.355,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 3720,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.355,
+              "expected_max_seconds": 8,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Social - Reddit golang",
+      "url": "https://www.reddit.com/r/golang/",
+      "category": "social_forum",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 50,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.765,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1263,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.765,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.738,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1263,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.738,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Social - StackOverflow go",
+      "url": "https://stackoverflow.com/questions/tagged/go",
+      "category": "social_forum",
+      "expect": {
+        "status": "ok",
+        "title_contains": "go",
+        "min_content_length": 50,
+        "no_html_tags": true,
+        "max_time_seconds": 10
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.291,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1229,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.291,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.188,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1229,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.188,
+              "expected_max_seconds": 10,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Cloudflare - what is cloudflare",
+      "url": "https://www.cloudflare.com/learning/what-is-cloudflare/",
+      "category": "cloudflare",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Cloudflare",
+        "min_content_length": 200,
+        "no_html_tags": true,
+        "max_time_seconds": 12
+      },
+      "status": "fail",
+      "run_statuses": [
+        "fail",
+        "fail"
+      ],
+      "score": 3,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 3.892,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": false,
+            "content_length": {
+              "actual": 348,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 3.892,
+              "expected_max_seconds": 12,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 3,
+          "max_score": 4,
+          "passed": false,
+          "reasons": [
+            "title mismatch (expected contains 'Cloudflare')"
+          ],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 3.687,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": false,
+            "content_length": {
+              "actual": 348,
+              "expected_min": 200,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 3.687,
+              "expected_max_seconds": 12,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "browser",
+            "timed_out": false
+          },
+          "score": 3,
+          "max_score": 4,
+          "passed": false,
+          "reasons": [
+            "title mismatch (expected contains 'Cloudflare')"
+          ],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Cloudflare - Discord blog",
+      "url": "https://discord.com/blog",
+      "category": "cloudflare",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Discord",
+        "min_content_length": 50,
+        "no_html_tags": true,
+        "max_time_seconds": 12
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.115,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 7122,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.115,
+              "expected_max_seconds": 12,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.09,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 7122,
+              "expected_min": 50,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.09,
+              "expected_max_seconds": 12,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Cloudflare - Medium article",
+      "url": "https://medium.com/@nikitonsky/software-disenchantment-1a44e6a7a6a3",
+      "category": "cloudflare",
+      "expect": {
+        "status": "ok",
+        "title_contains": "",
+        "min_content_length": 500,
+        "no_html_tags": true,
+        "max_time_seconds": 12
+      },
+      "status": "flaky",
+      "run_statuses": [
+        "ok",
+        "fail"
+      ],
+      "score": 3,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.442,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 1241,
+              "expected_min": 500,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.442,
+              "expected_max_seconds": 12,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.447,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 185,
+              "expected_min": 500,
+              "pass": false
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.447,
+              "expected_max_seconds": 12,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "stealth",
+            "timed_out": false
+          },
+          "score": 3,
+          "max_score": 4,
+          "passed": false,
+          "reasons": [
+            "content_length=185 (expected >=500)"
+          ],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Edge - Google homepage",
+      "url": "https://www.google.com/",
+      "category": "edge_cases",
+      "expect": {
+        "status": "ok",
+        "title_contains": "Google",
+        "min_content_length": 0,
+        "no_html_tags": true,
+        "max_time_seconds": 5
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 0.198,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 447,
+              "expected_min": 0,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.198,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 0.204,
+          "exit_code": 0,
+          "parse_ok": true,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 325,
+              "expected_min": 0,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": true,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 0.204,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "ok",
+            "actual_status": "ok",
+            "expected_backend": "",
+            "actual_backend": "direct",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "Edge - nonexistent invalid domain",
+      "url": "https://nonexistent.invalid/",
+      "category": "edge_cases",
+      "expect": {
+        "status": "fail",
+        "title_contains": "",
+        "min_content_length": 0,
+        "no_html_tags": false,
+        "max_time_seconds": 5
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 2.571,
+          "exit_code": 1,
+          "parse_ok": false,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 0,
+              "expected_min": 0,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": false,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 2.571,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "fail",
+            "actual_status": "fail",
+            "expected_backend": "",
+            "actual_backend": "",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": "Error: backend=direct op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=stealth op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=browser op=read code=upstream: page load error net::ERR_NAME_NOT_RESOLVED\nUsage:\n  ws read <url> [flags]\n\nFlags:\n  -h, --help   help for read\n      --js     force browser backend (headless Chrome)\n\nGlobal Flags:\n      --backend string     preferred backend (direct,stealth,browser)\n      --format string      output format: json|markdown|text\n      --no-cache           disable cache\n      --proxy string       proxy URL for read backends (http://..., socks5://...)\n      --timeout duration   request timeout (default 30s)\n\nbackend=direct op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=stealth op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=browser op=read code=upstream: page load error net::ERR_NAME_NOT_RESOLVED"
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 2.498,
+          "exit_code": 1,
+          "parse_ok": false,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 0,
+              "expected_min": 0,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": false,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 2.498,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "fail",
+            "actual_status": "fail",
+            "expected_backend": "",
+            "actual_backend": "",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": "Error: backend=direct op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=stealth op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=browser op=read code=upstream: page load error net::ERR_NAME_NOT_RESOLVED\nUsage:\n  ws read <url> [flags]\n\nFlags:\n  -h, --help   help for read\n      --js     force browser backend (headless Chrome)\n\nGlobal Flags:\n      --backend string     preferred backend (direct,stealth,browser)\n      --format string      output format: json|markdown|text\n      --no-cache           disable cache\n      --proxy string       proxy URL for read backends (http://..., socks5://...)\n      --timeout duration   request timeout (default 30s)\n\nbackend=direct op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=stealth op=read code=upstream: Get \"https://nonexistent.invalid/\": dial tcp: lookup nonexistent.invalid: no such host\nbackend=browser op=read code=upstream: page load error net::ERR_NAME_NOT_RESOLVED"
+        }
+      ]
+    },
+    {
+      "name": "Edge - httpbin 500 status",
+      "url": "https://httpbin.org/status/500",
+      "category": "edge_cases",
+      "expect": {
+        "status": "fail",
+        "title_contains": "",
+        "min_content_length": 0,
+        "no_html_tags": false,
+        "max_time_seconds": 5
+      },
+      "status": "pass",
+      "run_statuses": [
+        "ok",
+        "ok"
+      ],
+      "score": 4,
+      "max_score": 4,
+      "runs": [
+        {
+          "run_index": 1,
+          "elapsed_seconds": 4.694,
+          "exit_code": 1,
+          "parse_ok": false,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 0,
+              "expected_min": 0,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": false,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 4.694,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "fail",
+            "actual_status": "fail",
+            "expected_backend": "",
+            "actual_backend": "",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": "Error: backend=direct op=read code=upstream: status 500\nbackend=stealth op=read code=upstream: status 500\nbackend=browser op=read code=upstream: page load error net::ERR_HTTP_RESPONSE_CODE_FAILURE\nUsage:\n  ws read <url> [flags]\n\nFlags:\n  -h, --help   help for read\n      --js     force browser backend (headless Chrome)\n\nGlobal Flags:\n      --backend string     preferred backend (direct,stealth,browser)\n      --format string      output format: json|markdown|text\n      --no-cache           disable cache\n      --proxy string       proxy URL for read backends (http://..., socks5://...)\n      --timeout duration   request timeout (default 30s)\n\nbackend=direct op=read code=upstream: status 500\nbackend=stealth op=read code=upstream: status 500\nbackend=browser op=read code=upstream: page load error net::ERR_HTTP_RESPONSE_CODE_FAILURE"
+        },
+        {
+          "run_index": 2,
+          "elapsed_seconds": 3.427,
+          "exit_code": 1,
+          "parse_ok": false,
+          "checks": {
+            "status_match": true,
+            "backend_match": true,
+            "title_match": true,
+            "content_length": {
+              "actual": 0,
+              "expected_min": 0,
+              "pass": true
+            },
+            "clean_content": {
+              "enabled": false,
+              "pass": true
+            },
+            "speed": {
+              "actual_seconds": 3.427,
+              "expected_max_seconds": 5,
+              "pass": true
+            },
+            "expected_status": "fail",
+            "actual_status": "fail",
+            "expected_backend": "",
+            "actual_backend": "",
+            "timed_out": false
+          },
+          "score": 4,
+          "max_score": 4,
+          "passed": true,
+          "reasons": [],
+          "stderr": "Error: backend=direct op=read code=upstream: status 500\nbackend=stealth op=read code=upstream: status 500\nbackend=browser op=read code=upstream: page load error net::ERR_HTTP_RESPONSE_CODE_FAILURE\nUsage:\n  ws read <url> [flags]\n\nFlags:\n  -h, --help   help for read\n      --js     force browser backend (headless Chrome)\n\nGlobal Flags:\n      --backend string     preferred backend (direct,stealth,browser)\n      --format string      output format: json|markdown|text\n      --no-cache           disable cache\n      --proxy string       proxy URL for read backends (http://..., socks5://...)\n      --timeout duration   request timeout (default 30s)\n\nbackend=direct op=read code=upstream: status 500\nbackend=stealth op=read code=upstream: status 500\nbackend=browser op=read code=upstream: page load error net::ERR_HTTP_RESPONSE_CODE_FAILURE"
+        }
+      ]
+    }
+  ],
+  "failures": [
+    "[FAIL] Docs - OpenAI overview (https://platform.openai.com/docs/overview): title mismatch (expected contains 'OpenAI'); content_length=84 (expected >=100)",
+    "[FAIL] Cloudflare - what is cloudflare (https://www.cloudflare.com/learning/what-is-cloudflare/): title mismatch (expected contains 'Cloudflare')",
+    "[FLAKY] Cloudflare - Medium article (https://medium.com/@nikitonsky/software-disenchantment-1a44e6a7a6a3): run1=ok run2=fail (content_length=185 (expected >=500))"
+  ],
+  "by_category": {
+    "static": {
+      "score": 20,
+      "score_max": 20
+    },
+    "tech_docs": {
+      "score": 18,
+      "score_max": 20
+    },
+    "news_blog": {
+      "score": 20,
+      "score_max": 20
+    },
+    "github": {
+      "score": 12,
+      "score_max": 12
+    },
+    "chinese": {
+      "score": 12,
+      "score_max": 12
+    },
+    "social_forum": {
+      "score": 12,
+      "score_max": 12
+    },
+    "cloudflare": {
+      "score": 10,
+      "score_max": 12
+    },
+    "edge_cases": {
+      "score": 12,
+      "score_max": 12
+    }
+  }
+}
