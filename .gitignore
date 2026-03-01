@@ -1,0 +1,6 @@
+ws
+*.exe
+dist/
+.webscout/
+*.test
+coverage.out
