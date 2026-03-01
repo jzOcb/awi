@@ -7,10 +7,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/jasonz/webscout/internal/backend"
-	"github.com/jasonz/webscout/internal/cache"
-	"github.com/jasonz/webscout/internal/output"
-	"github.com/jasonz/webscout/internal/retry"
+	"github.com/jzOcb/awi/internal/backend"
+	"github.com/jzOcb/awi/internal/cache"
+	"github.com/jzOcb/awi/internal/output"
+	"github.com/jzOcb/awi/internal/retry"
 )
 
 func newReadCmd() *cobra.Command {

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/jasonz/webscout/internal/backend"
+	"github.com/jzOcb/awi/internal/backend"
 )
 
 func Render(format string, value any, markdownMaxLength int) (string, error) {

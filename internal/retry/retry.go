@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/jasonz/webscout/internal/backend"
+	"github.com/jzOcb/awi/internal/backend"
 )
 
 type Policy struct {

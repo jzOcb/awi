@@ -9,10 +9,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/jasonz/webscout/internal/backend"
-	"github.com/jasonz/webscout/internal/cache"
-	"github.com/jasonz/webscout/internal/config"
-	"github.com/jasonz/webscout/internal/retry"
+	"github.com/jzOcb/awi/internal/backend"
+	"github.com/jzOcb/awi/internal/cache"
+	"github.com/jzOcb/awi/internal/config"
+	"github.com/jzOcb/awi/internal/retry"
 )
 
 var (
@@ -29,8 +29,8 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "ws",
-	Short: "webscout multi-backend web fetcher",
+	Use:  "awi",
+	Short: "AWI - Agentic Web Interface",
 	PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 		if cfg != nil {
 			return nil

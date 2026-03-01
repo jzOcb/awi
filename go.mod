@@ -1,4 +1,4 @@
-module github.com/jasonz/webscout
+module github.com/jzOcb/awi
 
 go 1.24.1
 

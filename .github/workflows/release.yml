@@ -18,11 +18,11 @@ jobs:
       
       - name: Build binaries
         run: |
-          GOOS=darwin GOARCH=arm64 go build -o dist/ws-darwin-arm64 ./cmd/ws
-          GOOS=darwin GOARCH=amd64 go build -o dist/ws-darwin-amd64 ./cmd/ws
-          GOOS=linux GOARCH=amd64 go build -o dist/ws-linux-amd64 ./cmd/ws
-          GOOS=linux GOARCH=arm64 go build -o dist/ws-linux-arm64 ./cmd/ws
-          GOOS=windows GOARCH=amd64 go build -o dist/ws-windows-amd64.exe ./cmd/ws
+          GOOS=darwin GOARCH=arm64 go build -o dist/awi-darwin-arm64 ./cmd/ws
+          GOOS=darwin GOARCH=amd64 go build -o dist/awi-darwin-amd64 ./cmd/ws
+          GOOS=linux GOARCH=amd64 go build -o dist/awi-linux-amd64 ./cmd/ws
+          GOOS=linux GOARCH=arm64 go build -o dist/awi-linux-arm64 ./cmd/ws
+          GOOS=windows GOARCH=amd64 go build -o dist/awi-windows-amd64.exe ./cmd/ws
       
       - name: Create Release
         uses: softprops/action-gh-release@v2

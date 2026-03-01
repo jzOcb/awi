@@ -14,9 +14,9 @@ import (
 	"github.com/spf13/cobra"
 	xproxy "golang.org/x/net/proxy"
 
-	"github.com/jasonz/webscout/internal/backend"
-	"github.com/jasonz/webscout/internal/cache"
-	"github.com/jasonz/webscout/internal/output"
+	"github.com/jzOcb/awi/internal/backend"
+	"github.com/jzOcb/awi/internal/cache"
+	"github.com/jzOcb/awi/internal/output"
 )
 
 func newSearchCmd() *cobra.Command {

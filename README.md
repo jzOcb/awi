@@ -1,28 +1,28 @@
-# webscout
+# AWI
 
-A zero-config, single-binary web content fetcher for AI agents. No API keys, no external services, no dependencies.
+**Agentic Web Interface** — A zero-config, single-binary web content fetcher for AI agents. No API keys, no external services, no dependencies.
 
 ```bash
 # Read a webpage
-ws read https://example.com
+awi read https://example.com
 
 # Search the web
-ws search "Claude API rate limits" --limit 5
+awi search "Claude API rate limits" --limit 5
 
 # Batch fetch
-ws batch urls.txt --concurrency 10
+awi batch urls.txt --concurrency 10
 ```
 
-## Why webscout?
+## Why awi?
 
 AI agents need to read the web. Existing solutions either:
 - **Require API keys** (Jina Reader, Firecrawl) — costs money, rate limits, privacy concerns
 - **Require deploying services** (Firecrawl self-hosted) — complex setup
 - **Are Python-only** (Crawl4AI) — slow startup, dependency hell
 
-webscout is a **single Go binary** that works out of the box:
+awi is a **single Go binary** that works out of the box:
 
-| | webscout | Jina Reader | Firecrawl | Crawl4AI |
+| | awi | Jina Reader | Firecrawl | Crawl4AI |
 |---|---|---|---|---|
 | API key required | ❌ | ✅ | ✅ | ❌ |
 | Install | Single binary | `go install` | Docker/deploy | `pip install` |
@@ -34,23 +34,23 @@ webscout is a **single Go binary** that works out of the box:
 
 ### From source
 ```bash
-go install github.com/jasonz/webscout/cmd/ws@latest
+go install github.com/jasonz/awi/cmd/ws@latest
 ```
 
 ### From binary
-Download from [Releases](https://github.com/jasonz/webscout/releases).
+Download from [Releases](https://github.com/jasonz/awi/releases).
 
 ### Homebrew (coming soon)
 ```bash
-brew install jasonz/tap/webscout
+brew install jasonz/tap/awi
 ```
 
 ## How it works
 
-webscout uses a **3-tier backend architecture** with automatic escalation:
+awi uses a **3-tier backend architecture** with automatic escalation:
 
 ```
-ws read <url>
+awi read <url>
   │
   ├─ 1. direct    → Plain HTTP + readability (fastest, zero overhead)
   │     ↓ 403?
@@ -66,41 +66,41 @@ No configuration needed. If a simple HTTP request works, it uses that. If the si
 ### Read a webpage
 ```bash
 # Default (auto-selects best backend)
-ws read https://docs.python.org/3/tutorial/
+awi read https://docs.python.org/3/tutorial/
 
 # Force a specific backend
-ws read https://example.com --backend direct
-ws read https://spa-app.com --backend browser
-ws read https://protected-site.com --backend stealth
+awi read https://example.com --backend direct
+awi read https://spa-app.com --backend browser
+awi read https://protected-site.com --backend stealth
 
 # Force JS rendering
-ws read https://react-app.com --js
+awi read https://react-app.com --js
 
 # Output formats
-ws read https://example.com --format json      # default
-ws read https://example.com --format markdown
-ws read https://example.com --format text
+awi read https://example.com --format json      # default
+awi read https://example.com --format markdown
+awi read https://example.com --format text
 ```
 
 ### Search the web
 ```bash
 # Search via DuckDuckGo (no API key needed)
-ws search "golang web scraping" --limit 5
+awi search "golang web scraping" --limit 5
 ```
 
 ### Batch fetch
 ```bash
 # From file
-ws batch urls.txt --concurrency 10
+awi batch urls.txt --concurrency 10
 
 # From stdin
-cat urls.txt | ws batch - --concurrency 5
+cat urls.txt | awi batch - --concurrency 5
 ```
 
 ### Proxy support
 ```bash
-ws read https://example.com --proxy http://user:pass@proxy:8080
-ws read https://example.com --proxy socks5://127.0.0.1:1080
+awi read https://example.com --proxy http://user:pass@proxy:8080
+awi read https://example.com --proxy socks5://127.0.0.1:1080
 ```
 
 ## Output format
@@ -129,7 +129,7 @@ This domain is for use in illustrative examples...
 
 ## Configuration
 
-Optional. Create `~/.webscout/config.yaml`:
+Optional. Create `~/.awi/config.yaml`:
 
 ```yaml
 # Default output format
@@ -142,7 +142,7 @@ timeout: 30s
 cache:
   enabled: true
   ttl: 24h
-  dir: ~/.webscout/cache
+  dir: ~/.awi/cache
 
 # Network settings
 network:
@@ -171,8 +171,8 @@ network:
 
 ## Caching
 
-webscout caches responses locally (default 24h TTL):
-- Cache dir: `~/.webscout/cache/`
+awi caches responses locally (default 24h TTL):
+- Cache dir: `~/.awi/cache/`
 - SHA256-keyed JSON files
 - Cache keys include URL + backend + options
 - Disable with `--no-cache`
@@ -180,14 +180,14 @@ webscout caches responses locally (default 24h TTL):
 
 ## For AI agent developers
 
-webscout is designed to be called by AI agents:
+awi is designed to be called by AI agents:
 
 ```python
 import subprocess
 import json
 
 result = subprocess.run(
-    ["ws", "read", url, "--format", "json", "--no-cache"],
+    ["awi", "read", url, "--format", "json", "--no-cache"],
     capture_output=True, text=True
 )
 data = json.loads(result.stdout)
@@ -221,7 +221,7 @@ The 2 failures are sites with aggressive enterprise-grade bot protection (OpenAI
 
 - [ ] OpenClaw SKILL.md
 - [ ] Homebrew formula
-- [ ] `ws extract` — LLM-powered structured data extraction
+- [ ] `awi extract` — LLM-powered structured data extraction
 - [ ] Residential proxy pool integration
 - [ ] Cookie/session management
 - [ ] PDF/document parsing
