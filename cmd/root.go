@@ -16,11 +16,14 @@ import (
 )
 
 var (
-	backendFlag string
-	formatFlag  string
-	proxyFlag   string
-	noCacheFlag bool
-	timeoutFlag time.Duration
+	Version = "dev"
+
+	backendFlag     string
+	formatFlag      string
+	proxyFlag       string
+	noCacheFlag     bool
+	showVersionFlag bool
+	timeoutFlag     time.Duration
 
 	cfg         *config.Config
 	router      *backend.Router
@@ -29,8 +32,15 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:  "awi",
+	Use:   "awi",
 	Short: "AWI - Agentic Web Interface",
+	RunE: func(cmd *cobra.Command, _ []string) error {
+		if showVersionFlag {
+			fmt.Fprintf(cmd.OutOrStdout(), "%s version %s\n", cmd.Name(), Version)
+			return nil
+		}
+		return cmd.Help()
+	},
 	PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 		if cfg != nil {
 			return nil
@@ -93,6 +103,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&formatFlag, "format", "", "output format: json|markdown|text")
 	rootCmd.PersistentFlags().StringVar(&proxyFlag, "proxy", "", "proxy URL for read backends (http://..., socks5://...)")
 	rootCmd.PersistentFlags().BoolVar(&noCacheFlag, "no-cache", false, "disable cache")
+	rootCmd.PersistentFlags().BoolVar(&showVersionFlag, "version", false, "print version")
 	rootCmd.PersistentFlags().DurationVar(&timeoutFlag, "timeout", 30*time.Second, "request timeout")
 
 	rootCmd.AddCommand(newReadCmd())

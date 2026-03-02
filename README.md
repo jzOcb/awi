@@ -34,15 +34,15 @@ awi is a **single Go binary** that works out of the box:
 
 ### From source
 ```bash
-go install github.com/jasonz/awi/cmd/ws@latest
+go install github.com/jzOcb/awi/cmd/awi@latest
 ```
 
 ### From binary
-Download from [Releases](https://github.com/jasonz/awi/releases).
+Download from [Releases](https://github.com/jzOcb/awi/releases).
 
 ### Homebrew (coming soon)
 ```bash
-brew install jasonz/tap/awi
+brew install jzOcb/tap/awi
 ```
 
 ## How it works

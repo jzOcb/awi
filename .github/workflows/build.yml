@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches: [main]
+    tags: [v*]
   pull_request:
     branches: [main]
 
@@ -14,5 +15,12 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.24'
-      - run: go build -o awi ./cmd/awi
+      - name: Build
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_REF_TYPE}" != "tag" ]; then
+            TAG="dev"
+          fi
+          go build -ldflags "-X github.com/jzOcb/awi/cmd.Version=${TAG}" -o awi ./cmd/awi
       - run: go vet ./...
+      - run: go test ./...
