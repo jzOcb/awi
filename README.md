@@ -97,6 +97,35 @@ awi batch urls.txt --concurrency 10
 cat urls.txt | awi batch - --concurrency 5
 ```
 
+### Interact with a page (REPL)
+```bash
+# Opens a browser and enters interactive mode
+awi interact https://example.com
+
+# In the REPL:
+# awi> snapshot
+# awi> click @e5
+# awi> fill @e3 "hello@example.com"
+# awi> screenshot page.png
+# awi> close
+```
+
+### Act (AI agent mode)
+```bash
+# Get accessibility snapshot (default)
+awi act https://example.com
+
+# Execute an action
+awi act https://example.com click @e5
+awi act https://example.com fill @e3 "search query"
+
+# With screenshot
+awi act https://example.com click @e5 --screenshot result.png
+
+# Keep browser open for chaining
+awi act https://example.com --keep-open
+```
+
 ### Proxy support
 ```bash
 awi read https://example.com --proxy http://user:pass@proxy:8080
@@ -164,9 +193,9 @@ network:
 - **Best for:** Sites with Cloudflare or basic bot protection
 
 ### browser
-- Headless Chrome via [chromedp](https://github.com/chromedp/chromedp)
-- Anti-detection: removes `navigator.webdriver`, disables automation flags
-- Waits for page load + network idle
+- Headless Chrome via [agent-browser](https://github.com/vercel-labs/agent-browser) (Vercel)
+- Full browser automation with accessibility snapshots
+- **Requires:** `npm install -g agent-browser && agent-browser install`
 - **Best for:** JavaScript SPAs, dynamic content, heavy anti-bot pages
 
 ## Caching
@@ -237,5 +266,5 @@ Built with:
 - [cobra](https://github.com/spf13/cobra) — CLI framework
 - [go-readability](https://github.com/go-shiori/go-readability) — Content extraction
 - [tls-client](https://github.com/bogdanfinn/tls-client) — Browser TLS fingerprinting
-- [chromedp](https://github.com/chromedp/chromedp) — Headless Chrome
+- [agent-browser](https://github.com/vercel-labs/agent-browser) — Headless browser automation (Vercel)
 - [goquery](https://github.com/PuerkitoBio/goquery) — HTML parsing

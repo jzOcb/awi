@@ -3,21 +3,17 @@ package backend
 import (
 	"context"
 	"errors"
-	"io"
+	"fmt"
 	"net/url"
 	"os"
 	"os/exec"
 	"strings"
-	"sync"
 	"time"
 
-	"github.com/chromedp/cdproto/network"
-	"github.com/chromedp/cdproto/page"
-	"github.com/chromedp/chromedp"
 	"github.com/go-shiori/go-readability"
-	
 )
 
+// BrowserBackend uses Vercel's agent-browser CLI for headless browser automation.
 type BrowserBackend struct {
 	execPath string
 	timeout  time.Duration
@@ -27,17 +23,13 @@ func NewBrowserBackend(timeout time.Duration) *BrowserBackend {
 	if timeout <= 0 {
 		timeout = 45 * time.Second
 	}
-	return &BrowserBackend{execPath: findChromeExecutable(), timeout: timeout}
+	return &BrowserBackend{execPath: findAgentBrowser(), timeout: timeout}
 }
 
 func (b *BrowserBackend) Name() string  { return "browser" }
 func (b *BrowserBackend) Priority() int { return 3 }
 func (b *BrowserBackend) Available() bool {
-	if strings.TrimSpace(b.execPath) == "" {
-		return false
-	}
-	_, err := os.Stat(b.execPath)
-	return err == nil
+	return strings.TrimSpace(b.execPath) != ""
 }
 
 func (b *BrowserBackend) Read(ctx context.Context, req *ReadRequest) (*ReadResponse, error) {
@@ -45,7 +37,7 @@ func (b *BrowserBackend) Read(ctx context.Context, req *ReadRequest) (*ReadRespo
 		return nil, NewBackendError(ErrParse, b.Name(), "read", false, errors.New("missing URL"))
 	}
 	if !b.Available() {
-		return nil, NewBackendError(ErrUpstream, b.Name(), "read", true, errors.New("chrome executable not found"))
+		return nil, NewBackendError(ErrUpstream, b.Name(), "read", true, errors.New("agent-browser not found; install with: npm install -g agent-browser"))
 	}
 
 	timeout := b.timeout
@@ -53,34 +45,29 @@ func (b *BrowserBackend) Read(ctx context.Context, req *ReadRequest) (*ReadRespo
 		timeout = req.Timeout
 	}
 
-	allocOptions := []chromedp.ExecAllocatorOption{
-		chromedp.ExecPath(b.execPath),
-		chromedp.Headless,
-		chromedp.DisableGPU,
-		chromedp.NoFirstRun,
-		chromedp.NoDefaultBrowserCheck,
-		chromedp.Flag("disable-dev-shm-usage", true),
-		chromedp.Flag("no-sandbox", true),
-		chromedp.Flag("disable-blink-features", "AutomationControlled"),
-		chromedp.Flag("window-size", "1366,768"),
-		chromedp.Flag("lang", "en-US"),
-	}
-	if proxyURL := strings.TrimSpace(req.Proxy); proxyURL != "" {
-		allocOptions = append(allocOptions, chromedp.Flag("proxy-server", proxyURL))
+	runCtx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	// Open the URL
+	if err := b.run(runCtx, "open", req.URL); err != nil {
+		return nil, NewBackendError(ErrUpstream, b.Name(), "read", true, fmt.Errorf("open: %w", err))
 	}
 
-	allocCtx, cancelAlloc := chromedp.NewExecAllocator(ctx, allocOptions...)
-	defer cancelAlloc()
-
-	browserCtx, cancelBrowser := chromedp.NewContext(allocCtx)
-	defer cancelBrowser()
-
-	runCtx, cancelRun := context.WithTimeout(browserCtx, timeout)
-	defer cancelRun()
-
-	htmlContent, title, err := fetchPageHTML(runCtx, req.URL)
+	// Get the HTML content
+	htmlContent, err := b.runOutput(runCtx, "get", "html", "html")
 	if err != nil {
-		return nil, NewBackendError(ErrUpstream, b.Name(), "read", true, err)
+		_ = b.run(context.Background(), "close")
+		return nil, NewBackendError(ErrUpstream, b.Name(), "read", true, fmt.Errorf("get html: %w", err))
+	}
+
+	// Get title
+	title, _ := b.runOutput(runCtx, "get", "title")
+
+	// Close browser
+	_ = b.run(context.Background(), "close")
+
+	if strings.TrimSpace(htmlContent) == "" {
+		return nil, NewBackendError(ErrUpstream, b.Name(), "read", true, errors.New("empty page content"))
 	}
 
 	parsedURL, parseErr := url.Parse(req.URL)
@@ -92,7 +79,7 @@ func (b *BrowserBackend) Read(ctx context.Context, req *ReadRequest) (*ReadRespo
 	if readErr != nil {
 		return &ReadResponse{
 			URL:       req.URL,
-			Title:     title,
+			Title:     strings.TrimSpace(title),
 			Content:   htmlContent,
 			Backend:   b.Name(),
 			FetchedAt: time.Now(),
@@ -105,8 +92,6 @@ func (b *BrowserBackend) Read(ctx context.Context, req *ReadRequest) (*ReadRespo
 		content = strings.TrimSpace(article.Content)
 	}
 
-	// Fallback: if readability output is suspiciously short but raw HTML is long,
-	// use simple text extraction from HTML.
 	if len(content) < 200 && len(htmlContent) > 1000 {
 		fallback := FallbackExtract(htmlContent)
 		if len(fallback) > len(content) {
@@ -132,184 +117,61 @@ func (b *BrowserBackend) Read(ctx context.Context, req *ReadRequest) (*ReadRespo
 	}, nil
 }
 
-func (b *BrowserBackend) Search(ctx context.Context, req *SearchRequest) (*SearchResponse, error) {
-	_ = ctx
-	_ = req
+func (b *BrowserBackend) Search(_ context.Context, _ *SearchRequest) (*SearchResponse, error) {
 	return nil, NewBackendError(ErrParse, b.Name(), "search", false, errors.New("search unsupported for browser backend"))
 }
 
-func fetchPageHTML(ctx context.Context, targetURL string) (string, string, error) {
-	var htmlContent string
-	var title string
-
-	if err := chromedp.Run(ctx,
-		network.Enable(),
-		page.Enable(),
-		injectStealthScript(),
-		chromedp.Navigate(targetURL),
-		waitForLoadEvent(15*time.Second),
-		waitForNetworkIdleOrDelay(700*time.Millisecond, 5*time.Second, 3*time.Second),
-		chromedp.Title(&title),
-		chromedp.OuterHTML("html", &htmlContent, chromedp.ByQuery),
-	); err != nil {
-		return "", "", err
+// Snapshot opens a URL and returns the accessibility tree with refs.
+func (b *BrowserBackend) Snapshot(ctx context.Context, targetURL string) (string, error) {
+	if !b.Available() {
+		return "", fmt.Errorf("agent-browser not found")
 	}
-
-	if strings.TrimSpace(htmlContent) == "" {
-		return "", "", io.EOF
+	if err := b.run(ctx, "open", targetURL); err != nil {
+		return "", fmt.Errorf("open: %w", err)
 	}
-	return htmlContent, title, nil
-}
-
-func injectStealthScript() chromedp.Action {
-	const script = `(function () {
-  Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-  Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4] });
-})();`
-
-	return chromedp.ActionFunc(func(ctx context.Context) error {
-		_, err := page.AddScriptToEvaluateOnNewDocument(script).Do(ctx)
-		return err
-	})
-}
-
-func waitForNetworkIdle(idleFor, maxWait time.Duration) chromedp.Action {
-	return chromedp.ActionFunc(func(ctx context.Context) error {
-		var mu sync.Mutex
-		inflight := 0
-		lastActivity := time.Now()
-		loaded := false
-
-		chromedp.ListenTarget(ctx, func(ev interface{}) {
-			mu.Lock()
-			defer mu.Unlock()
-			switch ev.(type) {
-			case *network.EventRequestWillBeSent:
-				inflight++
-				lastActivity = time.Now()
-			case *network.EventLoadingFinished, *network.EventLoadingFailed:
-				if inflight > 0 {
-					inflight--
-				}
-				lastActivity = time.Now()
-			case *page.EventLoadEventFired:
-				loaded = true
-				lastActivity = time.Now()
-			}
-		})
-
-		deadline := time.Now().Add(maxWait)
-		ticker := time.NewTicker(100 * time.Millisecond)
-		defer ticker.Stop()
-
-		for {
-			select {
-			case <-ctx.Done():
-				return ctx.Err()
-			case <-ticker.C:
-				now := time.Now()
-				mu.Lock()
-				idle := loaded && inflight == 0 && now.Sub(lastActivity) >= idleFor
-				mu.Unlock()
-				if idle {
-					return nil
-				}
-				if now.After(deadline) {
-					return errors.New("network idle timeout")
-				}
-			}
-		}
-	})
-}
-
-func waitForLoadEvent(maxWait time.Duration) chromedp.Action {
-	return chromedp.ActionFunc(func(ctx context.Context) error {
-		done := make(chan struct{})
-		var once sync.Once
-
-		chromedp.ListenTarget(ctx, func(ev interface{}) {
-			switch ev.(type) {
-			case *page.EventLoadEventFired:
-				once.Do(func() { close(done) })
-			}
-		})
-
-		timer := time.NewTimer(maxWait)
-		ticker := time.NewTicker(100 * time.Millisecond)
-		defer timer.Stop()
-		defer ticker.Stop()
-
-		for {
-			var state string
-			if err := chromedp.Evaluate(`document.readyState`, &state).Do(ctx); err == nil {
-				state = strings.ToLower(strings.TrimSpace(state))
-				if state == "interactive" || state == "complete" {
-					return nil
-				}
-			}
-
-			select {
-			case <-ctx.Done():
-				return ctx.Err()
-			case <-done:
-				return nil
-			case <-timer.C:
-				return errors.New("page load event timeout")
-			case <-ticker.C:
-			}
-		}
-	})
-}
-
-func waitForNetworkIdleOrDelay(idleFor, idleMaxWait, fallbackDelay time.Duration) chromedp.Action {
-	return chromedp.ActionFunc(func(ctx context.Context) error {
-		idleDone := make(chan struct{}, 1)
-
-		waitCtx, cancel := context.WithTimeout(ctx, idleMaxWait)
-		defer cancel()
-
-		go func() {
-			_ = waitForNetworkIdle(idleFor, idleMaxWait).Do(waitCtx)
-			idleDone <- struct{}{}
-		}()
-
-		timer := time.NewTimer(fallbackDelay)
-		defer timer.Stop()
-
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		case <-idleDone:
-			return nil
-		case <-timer.C:
-			return nil
-		}
-	})
-}
-
-func findChromeExecutable() string {
-	candidates := []string{
-		"/usr/bin/google-chrome",
-		"/usr/bin/google-chrome-stable",
-		"/usr/bin/chromium",
-		"/usr/bin/chromium-browser",
-		"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-		"/Applications/Chromium.app/Contents/MacOS/Chromium",
-		"/snap/bin/chromium",
+	out, err := b.runOutput(ctx, "snapshot")
+	if err != nil {
+		_ = b.run(context.Background(), "close")
+		return "", fmt.Errorf("snapshot: %w", err)
 	}
-	for _, p := range candidates {
-		if p == "" {
-			continue
-		}
-		if st, err := os.Stat(p); err == nil && !st.IsDir() {
-			return p
-		}
-	}
+	return out, nil
+}
 
-	for _, bin := range []string{"google-chrome", "google-chrome-stable", "chromium", "chromium-browser"} {
-		if resolved, err := exec.LookPath(bin); err == nil {
-			return resolved
+// Act executes an agent-browser command (click, fill, type, etc.)
+func (b *BrowserBackend) Act(ctx context.Context, args ...string) (string, error) {
+	if !b.Available() {
+		return "", fmt.Errorf("agent-browser not found")
+	}
+	return b.runOutput(ctx, args...)
+}
+
+// Close closes the browser.
+func (b *BrowserBackend) Close() error {
+	return b.run(context.Background(), "close")
+}
+
+func (b *BrowserBackend) run(ctx context.Context, args ...string) error {
+	cmd := exec.CommandContext(ctx, b.execPath, args...)
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
+}
+
+func (b *BrowserBackend) runOutput(ctx context.Context, args ...string) (string, error) {
+	cmd := exec.CommandContext(ctx, b.execPath, args...)
+	out, err := cmd.Output()
+	if err != nil {
+		var exitErr *exec.ExitError
+		if errors.As(err, &exitErr) {
+			return "", fmt.Errorf("%w: %s", err, string(exitErr.Stderr))
 		}
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+func findAgentBrowser() string {
+	if p, err := exec.LookPath("agent-browser"); err == nil {
+		return p
 	}
 	return ""
 }

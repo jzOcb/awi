@@ -109,6 +109,8 @@ func init() {
 	rootCmd.AddCommand(newReadCmd())
 	rootCmd.AddCommand(newSearchCmd())
 	rootCmd.AddCommand(newBatchCmd())
+	rootCmd.AddCommand(newInteractCmd())
+	rootCmd.AddCommand(newActCmd())
 }
 
 func commandContext() (context.Context, context.CancelFunc) {
