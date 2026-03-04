@@ -97,33 +97,21 @@ awi batch urls.txt --concurrency 10
 cat urls.txt | awi batch - --concurrency 5
 ```
 
-### Interact with a page (REPL)
+### Interact with a page (snapshot)
 ```bash
-# Opens a browser and enters interactive mode
+# Opens a browser and returns accessibility snapshot with refs
 awi interact https://example.com
 
-# In the REPL:
-# awi> snapshot
-# awi> click @e5
-# awi> fill @e3 "hello@example.com"
-# awi> screenshot page.png
-# awi> close
+# Use refs from the snapshot in awi act
+# e.g. awi act @e5 click
 ```
 
-### Act (AI agent mode)
+### Act (AI agent mode, ref-based)
 ```bash
-# Get accessibility snapshot (default)
-awi act https://example.com
-
-# Execute an action
-awi act https://example.com click @e5
-awi act https://example.com fill @e3 "search query"
-
-# With screenshot
-awi act https://example.com click @e5 --screenshot result.png
-
-# Keep browser open for chaining
-awi act https://example.com --keep-open
+# Execute an action from snapshot refs
+awi act @e5 click
+awi act @e3 fill "search query"
+awi act @e3 type "hello@example.com"
 ```
 
 ### Proxy support
